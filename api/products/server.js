@@ -1,8 +1,3 @@
-// import logo from './logo.svg';
-import './App.css';
-import Header from './Header';  
-import Footer from './Footer';
-
 // 引入所需模組
 const express = require('express');
 const mongoose = require('mongoose');
@@ -46,24 +41,3 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
-
-function App() {
-  return (
-    <div>
-      <Header />
-
-      <main role="main" className="container">
-        <div className="starter-template">
-          <h1>我的首頁</h1>
-          <p className="lead">新專案.</p>
-        </div>
-      </main>
-
-      <Footer />
-    </div>
-    
-  );
-}
-
-export default App;
