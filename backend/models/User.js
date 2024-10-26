@@ -1,25 +1,46 @@
+// models/User.js
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  name: String,
-  phone: String,
-  address: String,
-  email: String,
-  password: String,
-  totalSpent: { type: Number, default: 0 },  // 新增累積消費金額
-  membershipLevel: { type: String, default: 'OrdinaryMember' },  // 初始會員等級
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  memberLevel: {
+    type: String,
+    enum: ['OrdinaryMember', 'GoldMember', 'DiamondMember', 'PlatinumMember'],
+    default: 'OrdinaryMember',
+  },
+  totalSpent: {
+    type: Number,
+    default: 0,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-userSchema.methods.updateMembershipLevel = function () {
+userSchema.methods.updateMemberLevel = function() {
   if (this.totalSpent >= 100000) {
-    this.membershipLevel = 'PlatinumMember';
+    this.memberLevel = 'PlatinumMember';
   } else if (this.totalSpent >= 50000) {
-    this.membershipLevel = 'DiamondMember';
+    this.memberLevel = 'DiamondMember';
   } else if (this.totalSpent >= 10000) {
-    this.membershipLevel = 'GoldMember';
+    this.memberLevel = 'GoldMember';
   } else {
-    this.membershipLevel = 'OrdinaryMember';
+    this.memberLevel = 'OrdinaryMember';
   }
 };
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
