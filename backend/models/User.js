@@ -1,33 +1,23 @@
 // models/User.js
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  memberLevel: {
-    type: String,
+  name: { type: String, required: true, },
+  email: { type: String,  required: true, unique: true, },
+  password: {  type: String, required: true, },
+  memberLevel: { type: String,
     enum: ['OrdinaryMember', 'GoldMember', 'DiamondMember', 'PlatinumMember'],
-    default: 'OrdinaryMember',
-  },
-  totalSpent: {
-    type: Number,
-    default: 0,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+    default: 'OrdinaryMember', },
+  totalSpent: {  type: Number,   default: 0,  },
+  createdAt: {   type: Date,  default: Date.now, },
+});
+
+userSchema.pre('save', async function (next) {
+  if (this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
 });
 
 userSchema.methods.updateMemberLevel = function() {
@@ -40,6 +30,10 @@ userSchema.methods.updateMemberLevel = function() {
   } else {
     this.memberLevel = 'OrdinaryMember';
   }
+};
+
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 const User = mongoose.model('User', userSchema);

@@ -49,7 +49,7 @@ function Footer() {
             <div className="ftco-footer-widget mb-4">
               <h2 className="ftco-heading-2">Quick Link</h2>
               <ul className="list-unstyled">
-                <li><a href="/new-user"><span className="fa fa-chevron-right mr-2"></span>New User</a></li>
+                <li><a href="/register"><span className="fa fa-chevron-right mr-2"></span>New User</a></li>
                 <li><a href="/help-center"><span className="fa fa-chevron-right mr-2"></span>Help Center</a></li>
                 <li><a href="/report-spam"><span className="fa fa-chevron-right mr-2"></span>Report Spam</a></li>
                 <li><a href="/faqs"><span className="fa fa-chevron-right mr-2"></span>FAQs</a></li>

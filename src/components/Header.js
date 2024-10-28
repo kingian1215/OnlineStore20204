@@ -27,7 +27,7 @@ function Header() {
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark" id="ftco-navbar">
         <div className="container">
-          <a className="navbar-brand" href="index.html">我的 <span>商店</span></a>
+          <a className="navbar-brand" href="/">我的 <span>商店</span></a>
           <div className="order-lg-last btn-group">
             <button className="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span className="flaticon-shopping-bag"></span>
@@ -56,7 +56,7 @@ function Header() {
           <div className="collapse navbar-collapse" id="ftco-nav">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active"><a href="/" className="nav-link">Home</a></li>
-              <li className="nav-item"><a href="about.html" className="nav-link">About</a></li>
+              <li className="nav-item"><a href="/about" className="nav-link">About</a></li>
               <li className="nav-item dropdown">
                 <button
                   className="nav-link dropdown-toggle"
@@ -71,14 +71,14 @@ function Header() {
                 {dropdownOpen && ( // 根據狀態顯示下拉菜單
                   <div className="dropdown-menu" aria-labelledby="dropdown04">
                     <a className="dropdown-item" href="/profile">Products</a>
-                    <a className="dropdown-item" href="product-single.html">Single Product</a>
+                    <a className="dropdown-item" href="/">Single Product</a>
                     <a className="dropdown-item" href="/cart">Cart</a>
-                    <a className="dropdown-item" href="checkout.html">Checkout</a>
+                    <a className="dropdown-item" href="/checkout">Checkout</a>
                   </div>
                 )}
               </li>
-              <li className="nav-item"><a href="blog.html" className="nav-link">Blog</a></li>
-              <li className="nav-item"><a href="contact.html" className="nav-link">Contact</a></li>
+              <li className="nav-item"><a href="/blog" className="nav-link">Blog</a></li>
+              <li className="nav-item"><a href="/contact" className="nav-link">Contact</a></li>
             </ul>
           </div>
         </div>
